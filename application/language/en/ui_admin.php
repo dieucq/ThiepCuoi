@@ -230,7 +230,7 @@ return array(
 	'Khách ở đâu cũng mở được (khuyên dùng)' => 'Guests can open it from anywhere (recommended)',
 	'tự tạo link riêng dạng' => 'automatically creates your own link like',
 	'miễn phí.' => 'for free.',
-	'Muốn tên đẹp như minh-lan.jagame.vn thì chọn sau ở mục Gửi link & QR.' => 'Want a nicer name like james-emma.jagame.vn? Choose it later under Share link & QR.',
+	'Muốn tên đẹp như {ex} thì chọn sau ở mục Gửi link & QR.' => 'Want a nicer name like {ex}? Choose it later under Share link & QR.',
 	'Chỉ trong mạng nhà' => 'Home network only',
 	'chỉ máy dùng chung wifi mới mở được.' => 'only devices on the same Wi-Fi can open it.',
 	'Tạo trang cưới' => 'Create wedding page',
