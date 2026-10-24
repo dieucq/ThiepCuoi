@@ -396,3 +396,24 @@ body .ed-bar .lang-switch a.on { background: rgba(255,255,255,.16); color: #fff 
 .ed-confirm ul { margin: 0; padding-left: 22px; line-height: 1.6; }
 .ed-confirm .ed-btns { justify-content: stretch; }
 .ed-confirm .ed-btns .btn { flex: 1 1 0; }
+
+/* Chuyện tình yêu (24/10): công tắc hiện cho khách, công cụ từng cột mốc; mục đang tắt hiện mờ để chủ nhà vẫn sửa được. */
+.story--off .story-list, .story--off .sec-head { opacity: .55; }
+.ed-story-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 16px; margin: 0 auto 26px; max-width: 760px;
+  padding: 10px 14px; border: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent); border-radius: 14px; background: color-mix(in srgb, var(--paper, #fff) 85%, transparent);
+  font: 500 15px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; color: #333; }
+.ed-story-bar label { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; cursor: pointer; }
+.ed-story-bar input { width: 22px; height: 22px; accent-color: var(--accent); }
+.ed-story-bar small { flex-basis: 100%; text-align: center; color: #8e1c12; }
+.ed-story-bar small[hidden] { display: none; }
+.ed-story-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.ed-story-add { display: flex; justify-content: center; margin-top: 8px; }
+.story-item[hidden] { display: none; }
+.story-img.slot-empty { aspect-ratio: 3 / 2; border: 2px dashed color-mix(in srgb, var(--accent) 45%, transparent); box-shadow: none; }
+/* Nút công cụ cột mốc: kiểu chữ trình sửa (không theo chữ in hoa của giao diện), gọn trên 1 hàng; "Bỏ ảnh" chỉ khi có ảnh. */
+.wd :is(.ed-story-tools, .ed-story-add) .btn.btn-sm { font: 500 14px/1 system-ui, -apple-system, "Segoe UI", sans-serif; letter-spacing: 0; text-transform: none;
+  min-height: 40px; padding: 0 14px; border-radius: 999px; box-shadow: none; margin: 0; }
+.wd .ed-story-tools .btn-ghost.btn-sm { background: #fff; color: #333; border: 1px solid #ddd; }
+.wd .ed-story-tools [data-st="up"], .wd .ed-story-tools [data-st="down"] { min-width: 44px; padding: 0; }
+.story-item:has(.story-img.slot-empty) [data-st="img"] { display: none; }
+@media (pointer: coarse) { .wd :is(.ed-story-tools, .ed-story-add) .btn.btn-sm { min-height: 44px; } }

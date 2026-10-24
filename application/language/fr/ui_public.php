@@ -329,4 +329,14 @@ return array(
 	'Âm lịch: ngày {d} tháng {m}' => 'Calendrier lunaire : jour {d} du mois {m}',
 	'Âm lịch: ngày {d} tháng {m} nhuận' => 'Calendrier lunaire : jour {d} du mois {m} intercalaire',
 	'Bầu trời đêm {ngay}' => 'Le ciel étoilé du {ngay}',
+	// ── Chuyện tình yêu (24/10, chữ mẫu) ──
+	'Chuyện tình yêu' => 'Notre histoire',
+	'Lần đầu gặp gỡ' => 'La rencontre',
+	'Thương nhau' => 'Le coup de foudre',
+	'Lời cầu hôn' => 'La demande',
+	'Về chung một nhà' => 'Pour toujours',
+	'Lần đầu gặp nhau giữa một ngày rất bình thường, không ai nghĩ rằng đó là khởi đầu của cả một hành trình.' => 'Nous nous sommes rencontrés un jour comme les autres — sans savoir que c’était le début de tout un voyage.',
+	'Từ những tin nhắn đầu tiên đến những chuyến đi chung, hai người dần trở thành một phần không thể thiếu của nhau.' => 'Des premiers messages aux premiers voyages, nous sommes peu à peu devenus indispensables l’un à l’autre.',
+	'Lời cầu hôn giản dị mà chân thành — và một cái gật đầu cho quãng đời còn lại.' => 'Une demande simple et sincère — et un « oui » pour le reste de notre vie.',
+	'Ngày hai người chính thức về chung một nhà, mở ra chương mới mang tên gia đình.' => 'Le jour où nous devenons officiellement une famille, et ouvrons un nouveau chapitre.',
 );

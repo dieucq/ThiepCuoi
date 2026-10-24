@@ -297,4 +297,14 @@ return array(
 	'Procession of the King — dàn dây' => 'Procession of the King — strings',
 	'Trân trọng kính mời|c.invite_greeting' => 'Dear',
 	'Trang đang được chuẩn bị' => 'Coming soon',
+	// ── Chuyện tình yêu (24/10, chữ mẫu) ──
+	'Chuyện tình yêu' => 'Our Love Story',
+	'Lần đầu gặp gỡ' => 'The Beginning',
+	'Thương nhau' => 'Falling in Love',
+	'Lời cầu hôn' => 'The Proposal',
+	'Về chung một nhà' => 'Our Forever Begins',
+	'Lần đầu gặp nhau giữa một ngày rất bình thường, không ai nghĩ rằng đó là khởi đầu của cả một hành trình.' => 'We met on a perfectly ordinary day — neither of us knew it was the start of a whole journey.',
+	'Từ những tin nhắn đầu tiên đến những chuyến đi chung, hai người dần trở thành một phần không thể thiếu của nhau.' => 'From the first messages to our first trips together, we slowly became an essential part of each other’s lives.',
+	'Lời cầu hôn giản dị mà chân thành — và một cái gật đầu cho quãng đời còn lại.' => 'A simple, heartfelt proposal — and a “yes” for the rest of our lives.',
+	'Ngày hai người chính thức về chung một nhà, mở ra chương mới mang tên gia đình.' => 'The day we officially become one family, opening a new chapter called home.',
 );

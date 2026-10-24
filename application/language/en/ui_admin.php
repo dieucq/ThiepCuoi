@@ -529,4 +529,7 @@ return array(
 	'Phiên bản đang dùng:' => 'Current version:',
 	'Kiểm tra cập nhật' => 'Check for updates',
 	'Trước mỗi lần cập nhật, dữ liệu được sao lưu vào thư mục database/backups (giữ 3 bản gần nhất). Máy chủ Linux không có trình duyệt: chạy lệnh php index.php cli cap_nhat ngay trong thư mục cài đặt.' => 'Before every update your data is backed up to database/backups (the 3 most recent are kept). On a Linux server without a browser, run php index.php cli cap_nhat ngay in the install folder.',
+	// ── Chuyện tình yêu (24/10) ──
+	'Tối đa {n} cột mốc.' => 'Up to {n} milestones.',
+	'Vị trí ảnh không hợp lệ.' => 'Invalid photo position.',
 );

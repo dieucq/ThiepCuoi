@@ -326,4 +326,14 @@ return array(
 	'Âm lịch: ngày {d} tháng {m}' => 'ຈັນທະຄະຕິ: ມື້ທີ {d} ເດືອນ {m}',
 	'Âm lịch: ngày {d} tháng {m} nhuận' => 'ຈັນທະຄະຕິ: ມື້ທີ {d} ເດືອນ {m} ອະທິກະມາດ',
 	'Bầu trời đêm {ngay}' => 'ທ້ອງຟ້າຍາມຄືນຂອງ {ngay}',
+	// ── Chuyện tình yêu (24/10, chữ mẫu) ──
+	'Chuyện tình yêu' => 'ເລື່ອງຄວາມຮັກຂອງພວກເຮົາ',
+	'Lần đầu gặp gỡ' => 'ພົບກັນຄັ້ງທຳອິດ',
+	'Thương nhau' => 'ຕົກຫຼຸມຮັກ',
+	'Lời cầu hôn' => 'ການຂໍແຕ່ງງານ',
+	'Về chung một nhà' => 'ເລີ່ມຕົ້ນຊີວິດຄູ່',
+	'Lần đầu gặp nhau giữa một ngày rất bình thường, không ai nghĩ rằng đó là khởi đầu của cả một hành trình.' => 'ພວກເຮົາພົບກັນໃນມື້ທຳມະດາມື້ໜຶ່ງ ບໍ່ມີໃຜຄິດວ່ານັ້ນຈະເປັນຈຸດເລີ່ມຕົ້ນຂອງການເດີນທາງທັງໝົດ.',
+	'Từ những tin nhắn đầu tiên đến những chuyến đi chung, hai người dần trở thành một phần không thể thiếu của nhau.' => 'ຈາກຂໍ້ຄວາມທຳອິດຈົນເຖິງການທ່ອງທ່ຽວນຳກັນ ພວກເຮົາຄ່ອຍໆກາຍເປັນສ່ວນໜຶ່ງທີ່ຂາດບໍ່ໄດ້ຂອງກັນແລະກັນ.',
+	'Lời cầu hôn giản dị mà chân thành — và một cái gật đầu cho quãng đời còn lại.' => 'ການຂໍແຕ່ງງານທີ່ລຽບງ່າຍແຕ່ຈິງໃຈ — ແລະຄຳວ່າ “ຕົກລົງ” ສຳລັບຊີວິດທີ່ເຫຼືອ.',
+	'Ngày hai người chính thức về chung một nhà, mở ra chương mới mang tên gia đình.' => 'ມື້ທີ່ພວກເຮົາກາຍເປັນຄອບຄົວດຽວກັນຢ່າງເປັນທາງການ ເປີດບົດໃໝ່ທີ່ຊື່ວ່າ “ຄອບຄົວ”.',
 );

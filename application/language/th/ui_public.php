@@ -326,4 +326,14 @@ return array(
 	'Âm lịch: ngày {d} tháng {m}' => 'จันทรคติ: วันที่ {d} เดือน {m}',
 	'Âm lịch: ngày {d} tháng {m} nhuận' => 'จันทรคติ: วันที่ {d} เดือน {m} (อธิกมาส)',
 	'Bầu trời đêm {ngay}' => 'ท้องฟ้ายามค่ำคืน {ngay}',
+	// ── Chuyện tình yêu (24/10, chữ mẫu) ──
+	'Chuyện tình yêu' => 'เรื่องราวความรักของเรา',
+	'Lần đầu gặp gỡ' => 'พบกันครั้งแรก',
+	'Thương nhau' => 'ตกหลุมรัก',
+	'Lời cầu hôn' => 'การขอแต่งงาน',
+	'Về chung một nhà' => 'เริ่มต้นชีวิตคู่',
+	'Lần đầu gặp nhau giữa một ngày rất bình thường, không ai nghĩ rằng đó là khởi đầu của cả một hành trình.' => 'เราพบกันในวันธรรมดาวันหนึ่ง ไม่มีใครคิดว่านั่นคือจุดเริ่มต้นของการเดินทางทั้งหมด',
+	'Từ những tin nhắn đầu tiên đến những chuyến đi chung, hai người dần trở thành một phần không thể thiếu của nhau.' => 'จากข้อความแรกจนถึงการเดินทางด้วยกัน เราค่อยๆ กลายเป็นส่วนหนึ่งที่ขาดไม่ได้ของกันและกัน',
+	'Lời cầu hôn giản dị mà chân thành — và một cái gật đầu cho quãng đời còn lại.' => 'การขอแต่งงานที่เรียบง่ายแต่จริงใจ — และคำว่า “ตกลง” สำหรับชีวิตที่เหลือ',
+	'Ngày hai người chính thức về chung một nhà, mở ra chương mới mang tên gia đình.' => 'วันที่เราได้เป็นครอบครัวเดียวกันอย่างเป็นทางการ เปิดบทใหม่ที่ชื่อว่า “ครอบครัว”',
 );

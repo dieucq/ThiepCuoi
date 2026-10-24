@@ -56,4 +56,9 @@ return array(
 	'Kim tuyến vàng' => 'Gold glitter',
 	'Sao lấp lánh' => 'Twinkling stars',
 	'Không hiệu ứng' => 'No effect',
+	// ── Chuyện tình yêu (24/10) ──
+	'Năm' => 'Year',
+	'Tiêu đề' => 'Title',
+	'Kể đôi dòng về kỷ niệm này…' => 'A few lines about this moment…',
+	'Ảnh minh họa' => 'Illustration photo',
 );

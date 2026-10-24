@@ -127,4 +127,18 @@ return array(
 	'Khách sẽ thấy trang chưa có:' => 'Guests will see a page without:',
 	'Bạn có thể bổ sung sau rồi bấm "Cho khách xem" lần nữa.' => 'You can add it later and press "Show guests" again.',
 	'Vẫn cho khách xem' => 'Show guests anyway',
+	// ── Chuyện tình yêu (24/10) ──
+	'Hiện mục Chuyện tình yêu cho khách' => 'Show the Love Story section to guests',
+	'Mục đang tắt — khách không thấy. Bật rồi bấm "Cho khách xem".' => 'This section is off — guests can’t see it. Turn it on, then press "Show guests".',
+	'Thêm cột mốc' => 'Add milestone',
+	'Đã bật — bấm "Cho khách xem" để khách thấy ✓' => 'Turned on — press "Show guests" so guests can see it ✓',
+	'Đã tắt mục Chuyện tình yêu ✓' => 'Love Story section turned off ✓',
+	'Đã thêm cột mốc — bấm vào chữ để sửa ✓' => 'Milestone added — tap the text to edit ✓',
+	'Bỏ ảnh minh họa của cột mốc này?' => 'Remove this milestone’s photo?',
+	'Đã bỏ ảnh ✓' => 'Photo removed ✓',
+	'Đưa lên' => 'Move up',
+	'Đưa xuống' => 'Move down',
+	'Bỏ ảnh' => 'Remove photo',
+	'Xóa cột mốc' => 'Delete milestone',
+	'Ẩn cột mốc này? Chữ và ảnh vẫn được giữ, thêm lại là thấy.' => 'Hide this milestone? Its text and photo are kept — add it again to bring them back.',
 );

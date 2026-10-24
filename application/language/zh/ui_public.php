@@ -326,4 +326,14 @@ return array(
 	'Âm lịch: ngày {d} tháng {m}' => '农历{m}月{d}日',
 	'Âm lịch: ngày {d} tháng {m} nhuận' => '农历闰{m}月{d}日',
 	'Bầu trời đêm {ngay}' => '{ngay}的夜空',
+	// ── Chuyện tình yêu (24/10, chữ mẫu) ──
+	'Chuyện tình yêu' => '我们的爱情故事',
+	'Lần đầu gặp gỡ' => '初次相遇',
+	'Thương nhau' => '坠入爱河',
+	'Lời cầu hôn' => '求婚',
+	'Về chung một nhà' => '携手成家',
+	'Lần đầu gặp nhau giữa một ngày rất bình thường, không ai nghĩ rằng đó là khởi đầu của cả một hành trình.' => '在再平常不过的一天相遇，谁也没想到那是一段旅程的开始。',
+	'Từ những tin nhắn đầu tiên đến những chuyến đi chung, hai người dần trở thành một phần không thể thiếu của nhau.' => '从最初的消息到一起的旅行，我们渐渐成为彼此不可或缺的一部分。',
+	'Lời cầu hôn giản dị mà chân thành — và một cái gật đầu cho quãng đời còn lại.' => '一次简单而真诚的求婚——以及一句许下余生的“我愿意”。',
+	'Ngày hai người chính thức về chung một nhà, mở ra chương mới mang tên gia đình.' => '我们正式成为一家人的这一天，开启名为“家”的新篇章。',
 );
