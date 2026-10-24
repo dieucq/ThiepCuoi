@@ -11,6 +11,13 @@
 //   2. Chặn cứng thư mục/đuôi file riêng tư (không phân biệt hoa thường).
 //   3. File tĩnh chỉ được phục vụ khi đuôi nằm trong danh sách cho phép; PHP chỉ chạy qua index.php.
 //   4. Kiểm lại bằng realpath (bắt mọi biến thể tên mà hệ điều hành tự quy về cùng một file).
+// Tự cập nhật (Docs/cap-nhat.md): trong ~0,2 s Updater đổi file, request MỚI chờ cho xong thay vì nạp lẫn file cũ/mới
+// (bản mã hóa tự so mã băm của __FILE__ -> lẫn file = 403). Dấu cũ hơn 15 s (tiến trình chết giữa chừng) thì bỏ qua.
+$__swap = __DIR__ . '/database/.update/swapping';
+for ($__i = 0; $__i < 150 && is_file($__swap) && time() - (int) @filemtime($__swap) < 15; $__i++) {
+    usleep(100000);
+    clearstatcache(true, $__swap);
+}
 $uri = (string) (isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/');
 $cut = strcspn($uri, '?#');                 // KHÔNG dùng parse_url: "//database/x" bị hiểu là host
 $uri = rb_router_normalize(rawurldecode(substr($uri, 0, $cut)));
