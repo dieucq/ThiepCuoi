@@ -18,6 +18,28 @@ for ($__i = 0; $__i < 150 && is_file($__swap) && time() - (int) @filemtime($__sw
     usleep(100000);
     clearstatcache(true, $__swap);
 }
+// Lưới an toàn (24/10, đo thật: ~4/11.000 request ngay sau lần thay mã đầu tiên vẫn dính): trong 10 s quanh lúc thay file,
+// request kết thúc bằng 403 RỖNG (dấu hiệu lớp chống sửa của bản mã hóa — 403 của ứng dụng luôn có nội dung) -> 307 về chính
+// URL, trình duyệt tự tải lại. Cookie ac_swap_retry chặn lặp (mỗi request chỉ thử lại 1 lần).
+$__swapped = dirname($__swap) . '/swapped_at';
+if (is_file($__swap) || (is_file($__swapped) && time() - (int) @filemtime($__swapped) < 10)) {
+    register_shutdown_function(function () {
+        if (http_response_code() !== 403 || headers_sent() || !empty($_COOKIE['ac_swap_retry'])) {
+            return;
+        }
+        $used = 0;
+        foreach (ob_get_status(true) as $__b) {
+            $used += (int) $__b['buffer_used'];
+        }
+        if ($used > 0) {
+            return;
+        }
+        header_remove();
+        setcookie('ac_swap_retry', '1', time() + 15, '/');
+        header('Cache-Control: no-store');
+        header('Location: ' . (isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/'), TRUE, 307);
+    });
+}
 $uri = (string) (isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/');
 $cut = strcspn($uri, '?#');                 // KHÔNG dùng parse_url: "//database/x" bị hiểu là host
 $uri = rb_router_normalize(rawurldecode(substr($uri, 0, $cut)));
