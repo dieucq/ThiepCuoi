@@ -18,6 +18,18 @@ color 0F
 SET "SCRIPT_DIR=%~dp0"
 SET "SELF=%~f0"
 
+:: ── Cập nhật từ trang quản trị (Docs/cap-nhat.md) ──────────────────────────
+:: cmd đọc file .bat theo từng dòng KHI ĐANG CHẠY nên web không thay .bat tại chỗ mà để bản mới ở database\.update\bat\
+:: — áp ở đây, khi chưa chạy gì. Thay chính file này thì chạy luôn bản mới trong CÙNG khối ( ... ) (cmd đọc trọn khối
+:: trước khi chạy, không đọc tiếp file đã đổi). MOVE lỗi thì chạy tiếp bản cũ, không lặp.
+IF "%~1"=="__beat" GOTO upd_done
+IF EXIST "!SCRIPT_DIR!database\.update\bat\reset_win.bat" MOVE /Y "!SCRIPT_DIR!database\.update\bat\reset_win.bat" "!SCRIPT_DIR!reset_win.bat" >nul 2>&1
+IF NOT DEFINED ANHCUOI_KEEPALIVE IF EXIST "!SCRIPT_DIR!database\.update\bat\keepalive_win.bat" MOVE /Y "!SCRIPT_DIR!database\.update\bat\keepalive_win.bat" "!SCRIPT_DIR!keepalive_win.bat" >nul 2>&1
+IF EXIST "!SCRIPT_DIR!database\.update\bat\run_window.bat" (
+    MOVE /Y "!SCRIPT_DIR!database\.update\bat\run_window.bat" "!SELF!" >nul 2>&1 && "!SELF!" %*
+)
+:upd_done
+
 :: ── Bố cục: RELEASE (phẳng) hay DEV (Web\ + Tools\ tách) ─────────────────
 IF EXIST "!SCRIPT_DIR!router.php" GOTO layout_release
 FOR %%I IN ("!SCRIPT_DIR!..") DO SET "ROOT_DIR=%%~fI"

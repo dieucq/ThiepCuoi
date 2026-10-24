@@ -4,6 +4,8 @@ REM Duong dan co the chua dau cach, ( ) & hoac chu co dau: SET "X=..." + !X! (R2
 setlocal EnableDelayedExpansion
 SET "RUN=%~dp0run_window.bat"
 SET "ANHCUOI_NO_BROWSER="
+REM run_window.bat khong thay keepalive_win.bat (file nay dang chay) khi thay bien nay (Docs/cap-nhat.md).
+SET "ANHCUOI_KEEPALIVE=1"
 echo [keepalive] Giam sat Anh Cuoi. Dong cua so de dung han.
 :loop
 echo [keepalive] !TIME! khoi dong...
