@@ -339,4 +339,9 @@ return array(
 	'Từ những tin nhắn đầu tiên đến những chuyến đi chung, hai người dần trở thành một phần không thể thiếu của nhau.' => 'Des premiers messages aux premiers voyages, nous sommes peu à peu devenus indispensables l’un à l’autre.',
 	'Lời cầu hôn giản dị mà chân thành — và một cái gật đầu cho quãng đời còn lại.' => 'Une demande simple et sincère — et un « oui » pour le reste de notre vie.',
 	'Ngày hai người chính thức về chung một nhà, mở ra chương mới mang tên gia đình.' => 'Le jour où nous devenons officiellement une famille, et ouvrons un nouveau chapitre.',
+	'Ảnh chưa được gửi trọn vẹn (file bị cắt dở) — hãy gửi lại ảnh này.' => 'Cette photo n’a pas été envoyée entièrement (fichier tronqué) — merci de la renvoyer.',   // QA3-08 ảnh cắt dở
+	'Album này không còn hoặc đường dẫn chưa đúng. Hỏi lại cô dâu chú rể hoặc xem trang cưới.' => 'Cet album n’existe plus ou le lien est incorrect. Demandez aux mariés ou consultez la page du mariage.',   // QA3-07
+	'Lời chúc của bạn' => 'Votre message',   // QA7-03 nhãn ô nhập
+	'Album chỉ để xem' => 'Album à consulter seulement',   // QA7-02
+	'Cô dâu chú rể chỉ mở album để xem trên trang, chưa cho tải ảnh về. Bạn vẫn xem thoải mái nhé!' => 'Les mariés ont ouvert l’album en consultation seulement, sans téléchargement. Bonne visite !',   // QA7-02
 );

@@ -337,7 +337,7 @@
 [data-theme="provence"] :is(.rsvp-card, .wish-form, .form-thanks, .rsvp-done)::after { display: block !important; content: ""; position: absolute; inset: 8px; border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
   box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent); background: none; transform: none; pointer-events: none; z-index: 0; }
 [data-theme="provence"] .rsvp-card { gap: 18px; }
-[data-theme="provence"] .rsvp-card > *, [data-theme="provence"] .wish-form > * { position: relative; z-index: 1; }
+[data-theme="provence"] .rsvp-card > :not(.hp), [data-theme="provence"] .wish-form > :not(.hp) { position: relative; z-index: 1; }   /* QA9-06: ô bẫy .hp giữ absolute */
 [data-theme="provence"] .rsvp-card .lead { font: italic 400 1.2rem/1.5 var(--f-body); color: var(--muted); margin: 0; }
 [data-theme="provence"] .rsvp-invitee b, [data-theme="provence"] .rsvp-done b { font: 400 2.6rem/1.3 var(--f-name); color: var(--accent); }
 [data-theme="provence"] .rsvp-choice { gap: 10px; }
@@ -482,3 +482,9 @@
 /* WebKit (Safari): filter drop-shadow trên .event-row chứa phần tử có mask vẽ nhầm 1 vệt đen dưới thanh menu (R1-THEMES-12).
    Ép lớp riêng (translateZ) thì WebKit vẽ đúng; trình duyệt khác không đổi. */
 [data-theme="provence"] .event-row { transform: translateZ(0); }
+
+/* QA9-07 (25/10): ≤ 400px con dấu bưu điện (130px) đè chữ tên nơi tổ chức -> thu dấu nhỏ, chừa lề phải cho tên. */
+@media (max-width: 400px) {
+  [data-theme="provence"] .ev-card::after { width: 92px; inset: 60px -6px auto auto; opacity: .7; }
+  [data-theme="provence"] .ev-place { margin-right: 88px; }
+}

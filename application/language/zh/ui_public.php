@@ -30,7 +30,7 @@ return array(
 	'Nhà hàng' => '餐厅',
 	'Hộp mừng cưới' => '婚礼红包',
 	'Sự hiện diện của bạn là món quà lớn nhất. Nếu không thể đến chung vui, bạn có thể gửi lời chúc mừng qua mã QR dưới đây.' => '您的光临是最珍贵的礼物。若无法亲临，也可通过下方二维码送上祝福。',
-	'Thân mời {xung_ho} {ten} đến chung vui cùng gia đình chúng mình trong ngày trọng đại.' => '诚挚邀请{ten}{xung_ho}在我们的大喜之日，与我们及双方家人一同欢聚。',
+	'Thân mời {xung_ho} {ten} đến chung vui cùng gia đình chúng mình trong ngày trọng đại.' => '诚挚邀请{ten}{xung_ho} 在我们的大喜之日，与我们及双方家人一同欢聚。',
 	'Đám cưới của chúng mình' => '我们的婚礼',
 	'Đám cưới' => '婚礼',
 	'Ảnh từ khách mời' => '来宾分享的照片',
@@ -336,4 +336,9 @@ return array(
 	'Từ những tin nhắn đầu tiên đến những chuyến đi chung, hai người dần trở thành một phần không thể thiếu của nhau.' => '从最初的消息到一起的旅行，我们渐渐成为彼此不可或缺的一部分。',
 	'Lời cầu hôn giản dị mà chân thành — và một cái gật đầu cho quãng đời còn lại.' => '一次简单而真诚的求婚——以及一句许下余生的“我愿意”。',
 	'Ngày hai người chính thức về chung một nhà, mở ra chương mới mang tên gia đình.' => '我们正式成为一家人的这一天，开启名为“家”的新篇章。',
+	'Ảnh chưa được gửi trọn vẹn (file bị cắt dở) — hãy gửi lại ảnh này.' => '这张照片没有完整上传（文件不完整）——请重新发送。',   // QA3-08 ảnh cắt dở
+	'Album này không còn hoặc đường dẫn chưa đúng. Hỏi lại cô dâu chú rể hoặc xem trang cưới.' => '此相册已不存在或链接有误。请询问新人，或查看婚礼页面。',   // QA3-07
+	'Lời chúc của bạn' => '您的祝福',   // QA7-03 nhãn ô nhập
+	'Album chỉ để xem' => '相册仅供观看',   // QA7-02
+	'Cô dâu chú rể chỉ mở album để xem trên trang, chưa cho tải ảnh về. Bạn vẫn xem thoải mái nhé!' => '新人只开放在页面上观看相册，暂不提供下载。您可以尽情观看！',   // QA7-02
 );

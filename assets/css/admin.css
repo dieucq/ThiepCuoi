@@ -91,6 +91,9 @@ article.guest:target { animation: guest-hit 2.4s ease-out; outline: 2px solid va
 
 /* R4-01: tên cặp đôi dài (4 chữ mỗi người) không được đẩy nút ☰ ra ngoài màn hình -> rút gọn bằng "…" */
 .adm-top .adm-brand { min-width: 0; flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 480px) {   /* QA8-10: tên cặp đôi trên thanh quản trị tối đa 2 dòng thay vì cắt "…" */
+  .adm-top .adm-brand { white-space: normal; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-height: 1.2; font-size: 1.05rem; overflow-wrap: anywhere; }
+}
 .adm-top .adm-menu-btn { flex-shrink: 0; }
 
 /* ── Khách mời: bộ chọn 10 mẫu thiệp (views/admin/guests.php, ảnh assets/img/cards/<mẫu>.jpg) ── */
@@ -104,6 +107,11 @@ article.guest:target { animation: guest-hit 2.4s ease-out; outline: 2px solid va
 .card-styles-box[open] > summary .cst-change { display: none; }
 .card-styles-box[open] > summary .cst-sum { color: var(--muted); }
 .card-styles-box > .card-styles { margin-top: 6px; padding-top: 0; border-top: 0; }
+/* QA2-10/QA8-07 (25/10): mũi tên ▶ không đứng riêng 1 dòng (chữ tiêu đề co lại, không đẩy xuống); mở ra không lặp chữ "Mẫu thiệp" ở h3. */
+.card-styles-box > summary { flex-wrap: nowrap; }
+.card-styles-box > summary .cst-sum { flex: 0 1 auto; min-width: 0; }
+.card-styles-box > summary .cst-change { flex: none; }
+.card-styles-box .cst-h-main { display: none; }
 .card-styles { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line); }
 /* R5-23: điện thoại — tab lọc 1 hàng cuộn ngang, mô tả phong bì gọn -> khách đầu tiên trong 1,5 màn hình */
 @media (max-width: 560px) {
@@ -196,7 +204,7 @@ form[data-settings-form].is-dirty > .form-actions .btn-accent { animation: save-
   .adm .back { display: inline-flex; align-items: center; min-height: 44px; }
   .adm .viz-table summary, .adm details > summary { display: flex; align-items: center; min-height: 44px; }
   .adm .adm-menu-btn { width: 44px; height: 44px; }
-  .adm .ph-actions button { width: 40px; height: 40px; }
+  .adm .ph-actions button { min-width: 44px; min-height: 44px; }   /* QA3-10: trước width/height 40px đè luật 44px của điện thoại */
   .adm .music-sug-yt, .adm .up-retry { display: inline-flex; align-items: center; min-height: 44px; }
 }
 

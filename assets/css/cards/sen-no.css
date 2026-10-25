@@ -97,3 +97,6 @@
 
 /* 07/10 (QA-NT-03): nhãn bìa nằm trên thẻ giấy --ic-paper -> chữ theo --ink/--muted (cùng độ sáng tối với giấy). */
 .ic--sen-no .ic-env-to small { color: color-mix(in srgb, var(--muted) 60%, var(--ink)); } .ic--sen-no .ic-env-to b { color: var(--ink); }
+
+/* QA2 rà soát (25/10): luật "> span { display:block }" thắng display:grid của .sno-heart -> đặt lại với độ ưu tiên cao hơn. */
+.ic .sno-heart { display: grid; }

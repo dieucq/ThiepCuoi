@@ -402,3 +402,6 @@
   [data-theme="wabi"] .dl-m, [data-theme="wabi"] .dl-y { font-size: min(1.1rem, 4.4vw); }
   [data-theme="wabi"] .dl-d { font-size: min(5.4rem, 22vw); }
 }
+
+/* QA9-11 (25/10): ≤ 380px hai chip trả lời 2 cột -> "✓ Sẽ tham / dự" -> xếp 1 cột. */
+@media (max-width: 380px) { [data-theme="wabi"] .rsvp-choice { grid-template-columns: 1fr; } }

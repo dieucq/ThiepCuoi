@@ -68,4 +68,5 @@ return array(
 	'cảm ơn bạn rất nhiều ♡' => '非常感谢您 ♡',
 	'Xong ✓' => '完成 ✓',
 	'Không sao chép tự động được — link đã được bôi chọn, hãy chép thủ công.' => '无法自动复制——链接已选中，请手动复制。',
+	'Số người là số nguyên từ 1 đến {n}.' => '人数须为 1 到 {n} 之间的整数。',   // QA7-06
 );

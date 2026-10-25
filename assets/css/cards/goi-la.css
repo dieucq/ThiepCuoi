@@ -49,3 +49,6 @@
   color: #2b2521;
 }
 .ic--goi-la .ic-scroll .ic-link:not(#_) { color: var(--accent-ink); }   /* thắng luật màu link của giao diện (.wd a) */
+
+/* QA2 rà soát (25/10): luật "> span { display:block }" thắng display:grid của .gl2-paper -> đặt lại với độ ưu tiên cao hơn. */
+.ic .gl2-paper { display: grid; }

@@ -175,7 +175,7 @@ html[data-theme="lucbao"] body.wd .eyebrow { font: italic 400 1.06rem/1.5 var(--
 [data-theme="lucbao"] :is(section.couple, .event, .location, .gallery-sec) { padding: 96px 20px; }
 
 /* ════════ CÔ DÂU & CHÚ RỂ (giấy ngà): zigzag hai vòm, chữ & viết tay ở giữa ════════ */
-[data-theme="lucbao"] section.couple, [data-theme="lucbao"] .location, [data-theme="lucbao"] .wrap.wishes, [data-theme="lucbao"] .wrap.cta { background: var(--ivory); color: var(--ink); }
+[data-theme="lucbao"] section.couple, [data-theme="lucbao"] .location, [data-theme="lucbao"] .wrap.wishes, [data-theme="lucbao"] .wrap.cta, [data-theme="lucbao"] .story { background: var(--ivory); color: var(--ink); }   /* QA5-01: .story chữ mực tối -> nền ngà */
 [data-theme="lucbao"] section.couple { border-radius: 50% 50% 0 0 / 56px 56px 0 0; margin-top: -40px; position: relative; z-index: 4; box-shadow: 0 -1px 0 rgba(212, 176, 106, .6); }
 [data-theme="lucbao"] .couple-row { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 0 28px; max-width: 900px; align-items: start; }
 [data-theme="lucbao"] .person-b { margin-top: 110px; }

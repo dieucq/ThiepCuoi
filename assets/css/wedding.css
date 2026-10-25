@@ -96,6 +96,8 @@ html { scroll-padding-top: 72px; }
 .wd-mono { display: inline-flex; align-items: center; gap: 4px; font: italic 600 1.35rem var(--f-name); color: var(--nav-ink) !important;
   border: 1.5px solid currentColor; border-radius: 50%; width: 58px; height: 58px; justify-content: center; opacity: 1 !important; }
 .wd-mono i { font-style: normal; font-size: .7em; color: var(--accent); }
+/* QA1-09 (25/10): Oải hương / Hoàng hôn — nền thanh menu trùng tông màu nhấn, ♡ gần như vô hình (1,08–1,18:1) -> theo màu chữ thanh. */
+:is([data-theme="lavender"], [data-theme="summer"]) .wd-nav .wd-mono i { color: inherit; }
 .wd-mono.big { width: 88px; height: 88px; font-size: 2rem; color: var(--accent) !important; margin: 0 auto 16px; }
 .wd-burger { display: none; background: none; border: 1px solid currentColor; color: var(--nav-ink); border-radius: 8px; width: 40px; height: 36px; font-size: 18px; justify-self: end; }
 @media (max-width: 760px) {
@@ -106,6 +108,10 @@ html { scroll-padding-top: 72px; }
   .wd-nav.open .wd-nav-l, .wd-nav.open .wd-nav-r { display: flex; flex-direction: column; gap: 10px; grid-column: 1 / -1; padding: 6px 4px; }
   .wd-nav.open { background: var(--nav-bg); }
   [data-theme="thiep"] .wd-nav.open { background: rgba(40,30,30,.92); }
+  /* QA9-01 (25/10): thiep đã cuộn (.scrolled đổi chữ sang tối) + mở menu (nền tối) -> chữ tối trên nền tối 1,2:1. */
+  [data-theme="thiep"] .wd-nav.open.scrolled { --nav-ink: #fff; }
+  /* QA9-02: màn ngang thấp (740x360, iPhone SE xoay) menu cao hơn màn -> mục cuối ngoài màn, không cuộn được. */
+  .wd-nav.open { max-height: 100vh; max-height: 100dvh; overflow-y: auto; overscroll-behavior: contain; }
 }
 
 /* ── Nhạc ────────────────────────────────────────────────── */
@@ -256,13 +262,53 @@ body:not(.is-draft) .info:empty { display: none; }
 .wd-g:hover::after { opacity: 1; }
 @media (max-width: 560px) { .wd-gallery { grid-template-columns: repeat(2, 1fr); gap: 4px; } }
 .more-albums { max-width: 1100px; margin: 36px auto 0; }
+/* 25/10: Ảnh trích dẫn ngang (ảnh ghép album, 4:3, 16:9) trên điện thoại: khung đứng (giao diện đặt min-height ~70svh) cắt mất nửa ảnh.
+   quote--wide (wedding.php, tỉ lệ ≥ 1,2): ảnh trọn khung đúng tỉ lệ, không phủ tối; câu trích dẫn xuống dưới trên nền màu giao diện.
+   Chọn .wd .quote.quote--wide để thắng quy tắc [data-theme="…"] .quote của 30 giao diện. */
+@media (max-width: 760px) {
+  /* Giao diện ảnh nền tràn khung: ảnh trọn tỉ lệ ở trên, chữ ở dưới. 4 giao diện "khung ảnh" (ảnh là 1 khung có viền) giữ thiết kế riêng. */
+  html:not([data-theme="ngoctrai"]):not([data-theme="wabi"]):not([data-theme="santorini"]):not([data-theme="provence"]) .wd .quote.quote--wide {
+    display: flex; flex-direction: column; align-items: center; min-height: 0; padding: 0; color: #fff;
+    background: var(--velvet, color-mix(in srgb, var(--accent) 78%, #1a1012)); }
+  html:not([data-theme="ngoctrai"]):not([data-theme="wabi"]):not([data-theme="santorini"]):not([data-theme="provence"]) .wd .quote.quote--wide .quote-bg {
+    position: relative; inset: auto; width: 100%; height: auto; aspect-ratio: var(--q-ar); flex: none; }
+  html:not([data-theme="ngoctrai"]):not([data-theme="wabi"]):not([data-theme="santorini"]):not([data-theme="provence"]) .wd .quote.quote--wide::after,
+  html:not([data-theme="ngoctrai"]):not([data-theme="wabi"]):not([data-theme="santorini"]):not([data-theme="provence"]) .wd .quote.quote--wide::before { display: none; }
+  html:not([data-theme="ngoctrai"]):not([data-theme="wabi"]):not([data-theme="santorini"]):not([data-theme="provence"]) .wd .quote.quote--wide blockquote { padding: 14px 22px 40px; margin: 0; }
+  html:not([data-theme="ngoctrai"]):not([data-theme="wabi"]):not([data-theme="santorini"]):not([data-theme="provence"]) .wd .quote.quote--wide blockquote p { color: #fff; text-shadow: none; }
+  html:not([data-theme="ngoctrai"]):not([data-theme="wabi"]):not([data-theme="santorini"]):not([data-theme="provence"]) .wd .quote.quote--wide > :not(.quote-bg):not(blockquote) {
+    position: relative; align-self: center; margin: 24px 0 0; }
+  /* QA10-03 (25/10): Pha lê đặt câu trích dẫn trong THẺ KÍNH SÁNG chữ mực -> giữ thẻ + màu chữ của giao diện, khối không nền tối. */
+  html[data-theme="phale"]:not(#_) .wd .quote.quote--wide { background: transparent; color: var(--ink); }
+  html[data-theme="phale"]:not(#_) .wd .quote.quote--wide blockquote { margin: 12px 12px 0; width: auto; }
+  html[data-theme="phale"]:not(#_) .wd .quote.quote--wide blockquote p { color: var(--ink); }
+  /* QA5-08: trang trí khung câu trích dẫn (quạt gatsby, hoa văn lucbao, góc cungdinh) định vị cho khung ảnh nền -> đè chữ ở kiểu ảnh trên/chữ dưới. */
+  html:is([data-theme="gatsby"], [data-theme="lucbao"], [data-theme="cungdinh"]) .wd .quote.quote--wide .pd-quote { display: none !important; }
+  /* QA5-12: Đêm sao / Điện ảnh có màu nhấn vàng -> nền pha ra vàng đất (chữ trắng 3:1, lạc tông) -> dùng nền tối của giao diện. */
+  html:is([data-theme="demsao"], [data-theme="dienanh"]) .wd .quote.quote--wide { background: var(--paper); }
+  /* Ngọc trai / Wabi: khung đứng 4:5 -> khung theo đúng tỉ lệ ảnh (giữ viền, nền, bố cục của giao diện). */
+  html:is([data-theme="ngoctrai"], [data-theme="wabi"]) .wd .quote.quote--wide .quote-bg { aspect-ratio: var(--q-ar); width: min(100%, 560px); }
+}
+
+/* QA7-04 (25/10): ngày cưới viết đủ (tiếng Thái: "วันอาทิตย์ที่ 20 ธันวาคม พ.ศ. 2569 · 17:30") dài hơn thẻ đầu trang -> không vượt thẻ, xuống dòng. */
+html[data-theme] body.wd .save-card .date { max-width: 100%; box-sizing: border-box; white-space: normal; text-wrap: balance; }
+/* QA7-07 (25/10): chữ Thái/Lào có dấu ghép trên/dưới — giãn chữ bất kỳ làm rời ký tự ("เ ร า ก ำ"). Giao diện VIP nạp sau đè luật
+   giảm giãn chữ cũ -> đặt 0 cho MỌI phần tử, độ ưu tiên tuyệt đối (giãn chữ với 2 thứ chữ này luôn sai). */
+html:is([lang="th"], [lang="lo"]) body :where(*) { letter-spacing: 0 !important; }
+
+/* QA8-09/QA6-10 (25/10): tên cặp đôi, dòng chân trang, nút tham dự: chia đều các dòng khi phải xuống dòng
+   ("MINH QUÂN & THU / HÀ", "KHÔNG THỂ THAM / DỰ" -> không còn 1 chữ lẻ dòng). */
+.wd :is(.names, .names .name, .wd-foot p, .rsvp-choice span, .ev-card h3, .couple-title) { text-wrap: balance; }
+
 /* 24/10: Chuyện tình yêu — dòng thời gian dọc (chấm ngọc trai + đường kẻ màu nhấn), chữ theo phông của giao diện đang dùng.
    Ảnh minh họa tùy chọn: điện thoại nằm dưới đoạn kể; máy tính nằm cột phải. */
 .story { padding: 64px 20px; }
 .story-list { list-style: none; position: relative; max-width: 760px; margin: 8px auto 0; padding: 0; }
 .story-list::before { content: ""; position: absolute; left: 10px; top: 12px; bottom: 12px; width: 2px;
   background: linear-gradient(color-mix(in srgb, var(--accent) 70%, transparent), color-mix(in srgb, var(--accent) 35%, transparent)); }
-.story-item { position: relative; display: grid; gap: 14px; padding: 0 0 40px 46px; text-align: left; }
+.story-item { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 0 0 40px 46px; text-align: left; }
+/* QA5-02 (25/10): link dài không dấu cách trong đoạn kể làm cả trang cuộn ngang trên điện thoại. */
+.story :is(.story-head, .story-text) { overflow-wrap: anywhere; }
 .story-item:last-child { padding-bottom: 4px; }
 .story-item::before { content: ""; position: absolute; left: 0; top: .35em; width: 22px; height: 22px; border-radius: 50%;
   background: radial-gradient(circle at 34% 30%, #fff 0 22%, color-mix(in srgb, var(--accent) 14%, #fff) 55%, color-mix(in srgb, var(--accent) 38%, #fff));
@@ -280,9 +326,13 @@ body:not(.is-draft) .story :is(.story-year, .story-title, .story-text):empty { d
 
 /* 24/10: Ảnh từ khách mời — mục riêng sau Lời chúc: dải ảnh xem trước nhỏ gọn 4 cột, không theo ô lớn của lưới ảnh cưới
    (Song hỷ / Tạp chí cho ô thứ 6n+1 / 9n+1 chiếm 2 cột). */
-.wd .guest-photos .guest-gallery { grid-template-columns: repeat(4, 1fr); gap: 6px; max-width: 640px; margin: 22px auto; }
-.wd .guest-photos .guest-gallery .wd-g { grid-column: auto !important; grid-row: auto !important; aspect-ratio: 1 !important; }
-@media (max-width: 560px) { .wd .guest-photos .guest-gallery { gap: 3px; } }
+/* QA4-03/QA3-05: ít ảnh (1–3) thì căn giữa thay vì dồn trái lưới 4 cột -> flex xuống dòng, mỗi ô 1/4 hàng. */
+.wd .guest-photos .guest-gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 640px; margin: 22px auto; }
+.wd .guest-photos .guest-gallery .wd-g { flex: 0 0 calc((100% - 18px) / 4); grid-column: auto !important; grid-row: auto !important; aspect-ratio: 1 !important; }
+@media (max-width: 560px) { .wd .guest-photos .guest-gallery { gap: 3px; } .wd .guest-photos .guest-gallery .wd-g { flex-basis: calc((100% - 9px) / 4); } }
+/* QA2-01: giao diện xếp gạch (Hoàng kim: img height auto, margin dưới) không áp vào dải ô vuông ảnh khách -> ảnh luôn phủ kín ô. */
+.wd .guest-photos .guest-gallery .wd-g { margin: 0; break-inside: auto; }
+.wd .guest-photos .guest-gallery .wd-g img { width: 100%; height: 100%; min-height: 0; object-fit: cover; }
 .wd .album-card { box-shadow: 0 2px 10px rgba(0,0,0,.08); }
 .wd .album-meta h3 { font-family: var(--f-head); color: var(--accent-ink, inherit); }
 
@@ -292,11 +342,14 @@ body:not(.is-draft) .story :is(.story-year, .story-title, .story-text):empty { d
 .rsvp-invitee { text-align: center; font: italic 1.2rem var(--f-body); margin: 0; }
 .rsvp-invitee b { display: block; font: var(--name-style) 700 2rem var(--f-name); color: var(--accent-ink, var(--accent)); }
 .rsvp-choice { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.rsvp-choice label { display: block; cursor: pointer; }
+.rsvp-choice label { display: flex; cursor: pointer; }
 .rsvp-choice input { position: absolute; opacity: 0; }
 .rsvp-choice span { display: block; text-align: center; padding: 14px; border: 2px solid var(--soft); border-radius: 12px; font: 600 1rem var(--f-ui); background: #fff; transition: all .15s; }
 .rsvp-choice input:checked + span { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, #fff); color: var(--ink); }
 .rsvp-choice input:focus-visible + span { outline: 2px solid var(--accent); }
+/* QA3-06: "Không thể tham dự" xuống 2 dòng trên điện thoại -> 2 nút luôn cao bằng nhau, chữ căn giữa; đệm ngang nhỏ lại. */
+.rsvp-choice span { flex: 1; display: flex; align-items: center; justify-content: center; }
+@media (max-width: 420px) { .wd .rsvp-choice span { padding-left: 8px; padding-right: 8px; } }
 .rsvp-done { text-align: center; }
 .rsvp-card .field-hint { display: block; margin-top: 4px; line-height: 1.4; }
 /* Lỗi của 1 ô (R3-04: SĐT chưa đúng) — đỏ đậm đủ tương phản trên nền trắng của thẻ ở mọi giao diện. */
@@ -421,6 +474,7 @@ html.has-cover .wd-cover { overflow-y: auto; overscroll-behavior: contain; curso
   .wd-nav.open a { display: flex; align-items: center; min-height: 44px; padding: 0 6px; font-size: 1rem;
     border-top: 1px solid color-mix(in srgb, var(--nav-ink) 18%, transparent); }
   .wd-nav.open .wd-nav-l a:first-child { border-top: 0; }
+  .wd-nav.open { row-gap: 0; }   /* QA1-10/QA2-08: khe lưới 16px giữa 2 nhóm mục -> "Địa điểm"–"Album" cách xa hơn các mục khác */
   /* Nút nhạc lên thanh menu (thanh luôn nằm trên cùng) -> không bao giờ che chữ/nút trong trang. */
   /* --nav-mid = tâm hàng đầu thanh menu do wedding.js đo theo nút ☰ (mỗi giao diện thanh cao khác nhau); chưa đo -> 29px như cũ. */
   body:not(.is-draft) .music { top: calc(var(--nav-mid, 29px) - 22px); bottom: auto; right: 68px; }
@@ -444,6 +498,9 @@ html.has-cover .wd-cover { overflow-y: auto; overscroll-behavior: contain; curso
 .ev-map-load b { display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px; background: #fff; color: var(--accent-ink, var(--accent));
   box-shadow: 0 4px 14px rgba(0,0,0,.1); font-weight: 600; }
 .ev-map-load small { font: 400 .9375rem/1.4 var(--f-body); color: var(--muted); max-width: 32ch; text-align: center; }
+/* QA6-03 (25/10): địa chỉ dài làm nội dung cao hơn khung bản đồ (ghim/dòng cuối bị cắt) -> địa chỉ tối đa 2 dòng. */
+.ev-map-load small { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; overflow-wrap: anywhere; }
+.ev-map-load { overflow: hidden; }
 .ev-map-pin { font-size: 2rem; line-height: 1; }
 .ev-map-load:hover b, .ev-map-load:focus-visible b { background: var(--accent-ink, var(--accent)); color: #fff; }
 .ev-map-load:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: -3px; }
@@ -470,7 +527,7 @@ html.has-cover .wd-cover { overflow-y: auto; overscroll-behavior: contain; curso
 [data-theme="serenity"], [data-theme="lavender"], [data-theme="summer"], [data-theme="thiep"], [data-theme="dienanh"] { --lang-on: #1d1b19; }
 .lang-sw a:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
 @media (max-width: 760px) {
-  .lang-sw { top: 7px; bottom: auto; right: calc(118px + env(safe-area-inset-right, 0px)); }
+  .lang-sw { top: calc(var(--nav-mid, 30px) - 23px); bottom: auto;   /* QA9-05: thẳng hàng ☰/♫ theo --nav-mid (cao 44 + viền 2) */ right: calc(118px + env(safe-area-inset-right, 0px)); }
   .lang-sw a { min-width: 44px; padding: 0 6px; }   /* M2-CARDS-01: ≥ 44px cả chiều ngang */
 }
 [data-theme="demsao"] .lang-sw a[aria-current]:not(#_) { color: #0d1530; background: var(--gold, #d8b56a); }
@@ -524,8 +581,8 @@ html[data-theme] body.wd .music-hint { right: calc(58px + env(safe-area-inset-ri
   html[data-theme] body.wd:not(.is-draft) .ic-reopen { left: calc(70px + env(safe-area-inset-left, 0px)); bottom: auto; }
   html[data-theme] body.wd:not(.is-draft) .music-hint { right: auto; }
 }
-html[data-theme] body.wd.is-draft .music { bottom: calc(164px + env(safe-area-inset-bottom, 0px)); }
-html[data-theme] body.wd.is-draft .ic-reopen { bottom: calc(164px + env(safe-area-inset-bottom, 0px)); }
+html[data-theme] body.wd.is-draft .music { bottom: calc(var(--ed-bar-h, 152px) + 12px + env(safe-area-inset-bottom, 0px)); }   /* QA1-02: theo chiều cao THẬT của thanh sửa (máy tính bảng: 198px) */
+html[data-theme] body.wd.is-draft .ic-reopen { bottom: calc(var(--ed-bar-h, 152px) + 12px + env(safe-area-inset-bottom, 0px)); }
 /* M1-GUEST-04/05 — màn 320px (và chữ 120%): 4 ô đếm ngược chia đều bề rộng thẻ thay vì min-width cố định (4×58 + khe = 268px
    > 248px còn lại trong thẻ) -> thẻ Lễ cưới không còn tràn/cắt; cột lưới minmax(0) để nội dung không nong rộng cột. */
 @media (max-width: 400px) {
@@ -644,5 +701,23 @@ html[data-theme] body.wd.is-draft .ic-reopen { bottom: calc(164px + env(safe-are
 /* 06/10: biểu tượng (link) theo màu chữ chân trang ở MỌI giao diện — `[data-theme] .wd a` (accent) làm icon chìm trên nền tối (Santorini, Hồng nhung). */
 .wd-credit a:not(#_):not(:hover):not(:focus-visible) { color: inherit; }
 .wd-credit-sep { margin: 0 4px; }
+/* QA3-09/QA2-12 (25/10): mỗi cụm chữ không ngắt, dấu "·" ở CUỐI cụm -> xuống dòng thì dấu nằm cuối dòng, không rơi xuống đầu dòng mới. */
+.wd-credit-g { display: inline-flex; align-items: center; white-space: nowrap; }
 body.wd[data-theme="dienanh"] .wd-foot .wd-credit::before { content: none; }
 .wd-credit .wd-ver { font-variant-numeric: tabular-nums; }   /* phiên bản (06/10) — khách/hỗ trợ biết trang đang chạy bản nào */
+
+/* QA6-09 (25/10): nhãn "THÁNG 10" không xuống 2 dòng (cùng hàng với "2026", bố cục không nhảy theo tháng). */
+[data-theme="bienxanh"] .dlock :is(.dl-m, .dl-y) { white-space: nowrap; }
+.wd-foot p { overflow-wrap: anywhere; }   /* QA9-11: tên dài toàn NBSP vẫn không tràn ngang */
+
+/* QA5-03/05/06/07/13 (25/10): dải "Ảnh từ khách mời" là dải 4 ô vuông nhỏ GIỐNG NHAU ở mọi giao diện — gỡ kiểu riêng của album lọt sang
+   (cột báo hoangkim, lỗ phim dienanh, nhãn "ẢNH 01" tapchi, ô so le/vòm/bo góc nth-child của vuonhoa, cungdinh, santorini, wabi). */
+.wd .guest-photos .guest-gallery { columns: auto; overflow: visible; padding: 0; grid-template-columns: none; }
+.wd .guest-photos .guest-gallery .wd-g { padding: 0 !important; width: auto; height: auto; transform: none !important; border-radius: 6px !important;
+  clip-path: none !important; border: 0; box-shadow: none; display: block; }
+.wd .guest-photos .guest-gallery .wd-g::before { display: none !important; }
+.wd .guest-photos .guest-gallery .wd-g img { position: static; border-radius: inherit; clip-path: none; transform: none; }
+/* Nút "Xem tất cả N ảnh" (viền) trên khối mời gửi ảnh nền tối của vài giao diện: chữ màu nhấn tối chìm mất -> theo màu chữ của khối. */
+.wd .guest-photos p.center .btn-ghost:not(#_) { color: inherit; border-color: currentColor; background: transparent; }
+[data-theme="tapchi"] .wd .guest-photos > * { grid-column: 1 / -1; grid-row: auto; }
+[data-theme="tapchi"] .wd .guest-photos .guest-gallery { margin: 18px 0 6px; max-width: 640px; justify-content: flex-start; }

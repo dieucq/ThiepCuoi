@@ -117,4 +117,6 @@ return array(
 	'In / Lưu PDF'                => 'Print / Save PDF',
 	'… và {n} thiệp nữa trong bản in.' => '… and {n} more cards in the print.',
 	'Không lưu được, thử lại sau.' => 'Could not save, please try again.',
+	'Lời mời' => 'Invitation',   // QA7-05
+	'Song hỷ' => 'Double Happiness',   // QA7-05
 );

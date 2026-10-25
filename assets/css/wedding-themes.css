@@ -881,7 +881,7 @@
 [data-theme="tapchi"] .wd-g { counter-increment: fig; }
 [data-theme="tapchi"] .wd-g::before { content: "Ảnh " counter(fig, decimal-leading-zero); position: absolute; left: 0; bottom: 0; z-index: 2; padding: 6px 10px 5px;
   background: var(--page); color: var(--ink); font: 600 .58rem var(--f-ui); letter-spacing: .2em; text-transform: uppercase; }
-[data-theme="tapchi"] .wd-g, [data-theme="tapchi"] .wd-g:nth-child(7n + 5) { grid-column: span 4; grid-row: span 1; }
+[data-theme="tapchi"] .wd-g, [data-theme="tapchi"] .wd-g:nth-child(7n + 5), [data-theme="tapchi"] .wd-g:nth-child(7n + 1) { grid-column: span 4; grid-row: span 1; }   /* QA3-02: 7n+1 cũ (ảnh 8 cao 2 hàng) để lại lỗ */
 [data-theme="tapchi"] .wd-g:nth-child(9n + 1), [data-theme="tapchi"] .wd-g:nth-child(9n) { grid-column: span 8; grid-row: span 2; }
 [data-theme="tapchi"] .wd-g:nth-child(9n + 8) { grid-column: 1 / span 4; }
 [data-theme="tapchi"] .gallery-sec:has(> p.center .btn) .wd-g:nth-child(n + 10) { display: none; }
@@ -1034,7 +1034,8 @@
   [data-theme="vuonhoa"] .event-card { padding: 84px 18px 38px; border-radius: 999px 999px 22px 22px / 170px 170px 22px 22px; }
   [data-theme="vuonhoa"] .event-card::before { border-radius: 999px 999px 16px 16px / 162px 162px 16px 16px; }
   [data-theme="vuonhoa"] .wd .countdown { gap: 7px; }
-  [data-theme="vuonhoa"] .wd .countdown div { width: 64px; height: 64px; }
+  [data-theme="vuonhoa"] .wd .countdown div { width: 70px; height: 70px; flex: 0 0 70px; }   /* QA3-04: không co thành bầu dục 42px */
+  [data-theme="vuonhoa"] .wd .countdown span { font-size: .72rem; letter-spacing: .06em; }
   [data-theme="vuonhoa"] .paper { padding: 40px 22px; }
   [data-theme="vuonhoa"] .wd-gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   [data-theme="vuonhoa"] .cta { border-radius: 999px 999px 22px 22px / 140px 140px 22px 22px; padding-top: 76px; margin: 20px 16px; }
@@ -1369,8 +1370,11 @@ html:not([lang="vi"])[data-theme="tapchi"] .wd-g::before { content: "Fig. " coun
    (độ ưu tiên 0,3,3 thắng luật width/min-width cố định 62–76px của từng giao diện, kể cả VIP nạp sau) -> thẻ Lễ cưới không nong
    rộng cột lưới, không bị cắt ô "GIÂY"; cột lưới thẻ = minmax(0, 1fr). ══ */
 @media (max-width: 400px) {
-  html[data-theme] body.wd .countdown { gap: 6px; }
-  html[data-theme] body.wd .countdown div { width: auto; min-width: 0; flex: 1 1 0; padding-left: 2px; padding-right: 2px; }
+  /* QA3-04 (25/10): "chia đều" chỉ đúng khi hàng chiếm trọn bề ngang thẻ — giao diện đặt hàng vừa nội dung (Vườn hoa) thì flex 1 1 0
+     co mỗi ô về ~42px (vòng tròn thành bầu dục). Hàng = 100% thẻ, mỗi ô tối đa 84px (giữ tỉ lệ thiết kế 62–76px). */
+  html[data-theme] body.wd .countdown { gap: 6px; width: 100%; justify-content: center; }
+  html[data-theme] body.wd .countdown div { width: auto; min-width: 0; max-width: 84px; flex: 1 1 0; padding-left: 2px; padding-right: 2px; }
+  html[data-theme="vuonhoa"] body.wd .countdown div { height: auto; aspect-ratio: 1; }
   html[data-theme] body.wd .countdown b { font-size: 1.6rem; }
   html[data-theme] body.wd .event-row { grid-template-columns: minmax(0, 1fr); }
   html[data-theme] body.wd .event-card { min-width: 0; max-width: 100%; box-sizing: border-box; }

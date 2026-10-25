@@ -209,7 +209,8 @@
 
 /* Điện thoại xoay ngang / màn thấp (R1-CARDS-01): bìa co theo chiều cao -> nhãn tên co theo, hạ xuống dưới huy hiệu. */
 @media (max-height: 500px) {
-  .ic--v-lucbao .ic-env-to { top: 60%; bottom: 9%; gap: 3px; }
+  .ic--v-lucbao .ic-env-btn { width: min(380px, 82vw, calc((100vh - 120px) / 1.34)); }   /* QA10-04: bìa to hơn, tên đủ 2 dòng */
+  .ic--v-lucbao .ic-env-to { top: 60%; bottom: 7%; gap: 2px; }
   .ic--v-lucbao .ic-env-to small { font-size: .875rem; letter-spacing: .1em; }
   .ic--v-lucbao .ic-env-to b { font-size: 1rem; line-height: 1.15; }
 }

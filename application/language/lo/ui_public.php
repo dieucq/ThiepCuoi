@@ -336,4 +336,9 @@ return array(
 	'Từ những tin nhắn đầu tiên đến những chuyến đi chung, hai người dần trở thành một phần không thể thiếu của nhau.' => 'ຈາກຂໍ້ຄວາມທຳອິດຈົນເຖິງການທ່ອງທ່ຽວນຳກັນ ພວກເຮົາຄ່ອຍໆກາຍເປັນສ່ວນໜຶ່ງທີ່ຂາດບໍ່ໄດ້ຂອງກັນແລະກັນ.',
 	'Lời cầu hôn giản dị mà chân thành — và một cái gật đầu cho quãng đời còn lại.' => 'ການຂໍແຕ່ງງານທີ່ລຽບງ່າຍແຕ່ຈິງໃຈ — ແລະຄຳວ່າ “ຕົກລົງ” ສຳລັບຊີວິດທີ່ເຫຼືອ.',
 	'Ngày hai người chính thức về chung một nhà, mở ra chương mới mang tên gia đình.' => 'ມື້ທີ່ພວກເຮົາກາຍເປັນຄອບຄົວດຽວກັນຢ່າງເປັນທາງການ ເປີດບົດໃໝ່ທີ່ຊື່ວ່າ “ຄອບຄົວ”.',
+	'Ảnh chưa được gửi trọn vẹn (file bị cắt dở) — hãy gửi lại ảnh này.' => 'ຮູບນີ້ອັບໂຫຼດບໍ່ຄົບ (ໄຟລ໌ຖືກຕັດ) — ກະລຸນາສົ່ງຮູບນີ້ອີກຄັ້ງ.',   // QA3-08 ảnh cắt dở
+	'Album này không còn hoặc đường dẫn chưa đúng. Hỏi lại cô dâu chú rể hoặc xem trang cưới.' => 'ອາລະບໍ້ານີ້ບໍ່ມີແລ້ວ ຫຼື ລິ້ງບໍ່ຖືກຕ້ອງ. ສອບຖາມເຈົ້າບ່າວເຈົ້າສາວ ຫຼື ເບິ່ງໜ້າງານແຕ່ງ.',   // QA3-07
+	'Lời chúc của bạn' => 'ຄຳອວຍພອນຂອງທ່ານ',   // QA7-03 nhãn ô nhập
+	'Album chỉ để xem' => 'ອັລບັມສຳລັບເບິ່ງເທົ່ານັ້ນ',   // QA7-02
+	'Cô dâu chú rể chỉ mở album để xem trên trang, chưa cho tải ảnh về. Bạn vẫn xem thoải mái nhé!' => 'ເຈົ້າບ່າວເຈົ້າສາວເປີດອັລບັມໃຫ້ເບິ່ງໃນໜ້າເທົ່ານັ້ນ, ຍັງບໍ່ໃຫ້ດາວໂຫຼດຮູບ. ທ່ານເບິ່ງໄດ້ຕາມສະບາຍເດີ!',   // QA7-02
 );

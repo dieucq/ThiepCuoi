@@ -339,7 +339,9 @@
   .ed-bar.ed-mini .ed-actions { grid-column: 2; grid-row: 1; }
   /* Nút ✨ nổi thừa trên điện thoại (đã có ✨ trong thanh); ♫ lên thanh menu trên cùng như trang khách. */
   .ed-fx-btn { display: none; }
-  body.is-draft.is-editing .music { top: 7px; bottom: auto; right: calc(68px + env(safe-area-inset-right, 0px)); }
+  /* QA1-01 (25/10): luật "html[data-theme] body.wd .music { bottom: … }" của wedding.css ưu tiên cao hơn -> top 7px + bottom 16px
+     kéo khối ♫ thành dải 44×673px vô hình che ☰ và mép phải. Độ ưu tiên cao hơn; căn theo tâm thanh menu (--nav-mid, wedding.js). */
+  html[data-theme] body.wd.is-draft.is-editing .music { top: calc(var(--nav-mid, 29px) - 22px); bottom: auto; right: calc(68px + env(safe-area-inset-right, 0px)); }
   body.is-draft.is-editing .music-btn { width: 44px; height: 44px; font-size: 18px; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
   /* Đệm cuối trang = chiều cao thanh đầy đủ: nội dung cuối (ghi công nhạc, chân trang) cuộn lên được trên thanh. */
   body.is-draft .wd-foot { padding-bottom: calc(var(--ed-pad, 170px) + 24px); }

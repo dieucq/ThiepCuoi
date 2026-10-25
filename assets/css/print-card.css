@@ -47,7 +47,7 @@ html.pc-editing .pc-sheet { padding-top: 12px; }
 .pc-in > :first-child { margin-top: auto; }
 .pc-in > :last-child { margin-bottom: auto; }
 .pc-in > * { max-width: 100%; flex: none; }
-.pc-t { overflow-wrap: anywhere; white-space: pre-line; }
+.pc-t { overflow-wrap: break-word; white-space: pre-line; }   /* QA8-01: anywhere cắt giữa từ ở cột hẹp (thiệp ngang khổ vuông) */
 div.pc-t { display: block; }
 
 /* ── Chữ ── */
@@ -140,6 +140,15 @@ div.pc-t { display: block; }
 .pc-col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55em; }
 [data-layout="ngang"] .pc-f-back .pc-in > .pc-col { margin: 0; }
 [data-layout="ngang"] .pc-f-back .pc-col + .pc-col { border-left: 1px solid color-mix(in srgb, var(--pc-acc) 45%, transparent); padding-left: 7cqmin; }
+/* QA8-01 (25/10): thiệp ngang ở khổ gần vuông (14×14…) — mỗi cột chỉ ~5 cm, tên cặp đôi đặt ngang hàng + 2 sự kiện cạnh nhau thành ô
+   ~2 cm, "Nguyễn" bị cắt giữa chữ. Khổ vuông thừa chiều cao -> trong mỗi cột xếp dọc: tên / & / tên, mỗi sự kiện 1 hàng. */
+@container (max-aspect-ratio: 5 / 4) {
+  [data-layout="ngang"] .pc-f-back .pc-couple { flex-direction: column; gap: .1em; }
+  [data-layout="ngang"] .pc-f-back .pc-evs { grid-template-columns: minmax(0, 1fr); }
+  [data-layout="ngang"] .pc-f-back .pc-evs > .pc-ev:last-child:nth-child(odd) { grid-column: auto; }
+  [data-layout="ngang"] .pc-f-back .pc-in { padding-top: 6cqmin; padding-bottom: 6cqmin; font-size: 90%; }
+  [data-layout="ngang"] .pc-f-back .pc-col { gap: .4em; }
+}
 
 /* Bố cục tối giản: chữ nhỏ, khoảng trắng nhiều */
 [data-layout="toigian"] .pc-f-front .pc-in { gap: 1.1em; }

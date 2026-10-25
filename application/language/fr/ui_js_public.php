@@ -69,4 +69,5 @@ return array(
 	'cảm ơn bạn rất nhiều ♡' => 'merci infiniment ♡',
 	'Xong ✓' => 'Terminé ✓',
 	'Không sao chép tự động được — link đã được bôi chọn, hãy chép thủ công.' => 'Copie automatique impossible — le lien est sélectionné, veuillez le copier manuellement.',
+	'Số người là số nguyên từ 1 đến {n}.' => 'Le nombre de personnes doit être un entier de 1 à {n}.',   // QA7-06
 );

@@ -532,4 +532,8 @@ return array(
 	// ── Chuyện tình yêu (24/10) ──
 	'Tối đa {n} cột mốc.' => 'Up to {n} milestones.',
 	'Vị trí ảnh không hợp lệ.' => 'Invalid photo position.',
+	// ── QA đợt 25/10 ──
+	'ẩn — khách không thấy' => 'hidden — guests can’t see it',
+	'có mật khẩu — khách chỉ thấy thẻ khóa' => 'password — guests only see a locked card',
+	'Ảnh chưa được gửi trọn vẹn (file bị cắt dở) — hãy gửi lại ảnh này.' => 'This photo didn’t upload completely (the file is cut off) — please send it again.',   // QA3-08 ảnh cắt dở
 );

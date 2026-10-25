@@ -307,4 +307,9 @@ return array(
 	'Từ những tin nhắn đầu tiên đến những chuyến đi chung, hai người dần trở thành một phần không thể thiếu của nhau.' => 'From the first messages to our first trips together, we slowly became an essential part of each other’s lives.',
 	'Lời cầu hôn giản dị mà chân thành — và một cái gật đầu cho quãng đời còn lại.' => 'A simple, heartfelt proposal — and a “yes” for the rest of our lives.',
 	'Ngày hai người chính thức về chung một nhà, mở ra chương mới mang tên gia đình.' => 'The day we officially become one family, opening a new chapter called home.',
+	'Ảnh chưa được gửi trọn vẹn (file bị cắt dở) — hãy gửi lại ảnh này.' => 'This photo didn’t upload completely (the file is cut off) — please send it again.',   // QA3-08 ảnh cắt dở
+	'Album này không còn hoặc đường dẫn chưa đúng. Hỏi lại cô dâu chú rể hoặc xem trang cưới.' => 'This album no longer exists or the link isn’t right. Ask the couple, or see the wedding page.',   // QA3-07
+	'Lời chúc của bạn' => 'Your wish',   // QA7-03 nhãn ô nhập
+	'Album chỉ để xem' => 'View-only album',   // QA7-02
+	'Cô dâu chú rể chỉ mở album để xem trên trang, chưa cho tải ảnh về. Bạn vẫn xem thoải mái nhé!' => 'The couple has made this album view-only — photos can’t be downloaded. Enjoy browsing!',
 );

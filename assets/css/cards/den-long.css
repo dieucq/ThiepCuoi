@@ -45,3 +45,6 @@
 
 /* 07/10 (QA-NT-03): nhãn bìa nằm trên thẻ giấy --ic-paper -> chữ theo --ink/--muted (cùng độ sáng tối với giấy). */
 .ic--den-long .ic-env-to small { color: color-mix(in srgb, var(--muted) 60%, var(--ink)); } .ic--den-long .ic-env-to b { color: var(--ink); }
+
+/* QA2 rà soát (25/10): luật "> span { display:block }" thắng display:grid của .dl-silk -> đặt lại với độ ưu tiên cao hơn. */
+.ic .dl-silk { display: grid; }

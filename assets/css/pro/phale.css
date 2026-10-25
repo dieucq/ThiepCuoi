@@ -378,3 +378,17 @@
 
 /* Chủ nhà sửa (R1-THEMES-01): tấm kính .save-card che góc dưới ảnh -> nút ảnh đầu trang lên góc trên (dưới thanh menu). */
 [data-theme="phale"] body.is-draft .main-photo .ed-img-tools { top: 84px; bottom: auto; right: 14px; z-index: 7; }
+
+/* QA10-01 (25/10): điện thoại xoay ngang (màn thấp) — thẻ kính cao hơn màn nên chui dưới thanh menu, logo đè chữ.
+   Chừa chỗ cho menu + thu gọn thẻ: tên 1 dòng, chữ nhỏ lại, ngày/âm lịch chung dòng. */
+@media (orientation: landscape) and (max-height: 520px) {
+  [data-theme="phale"] .intro { min-height: 100svh; padding: 84px 5vw 12px; justify-content: flex-end; }
+  [data-theme="phale"] .save-card { max-width: 760px; padding: 16px 32px 14px; }
+  [data-theme="phale"] body.wd .save-card .eyebrow { margin-bottom: 2px; }
+  [data-theme="phale"] .names, [data-theme="phale"] .names.names--long { flex-direction: row; justify-content: center; align-items: baseline; gap: 0 .3em; flex-wrap: wrap;
+    font-size: clamp(2.2rem, 6.5vh + 1.2rem, 3.2rem); margin-bottom: 4px; }
+  [data-theme="phale"] .names.names--xl { flex-direction: column; align-items: center; font-size: clamp(1.8rem, 5vh + 1rem, 2.6rem); }
+  [data-theme="phale"] .names .amp::before, [data-theme="phale"] .names .amp::after { display: none; }
+  [data-theme="phale"] .save-card .date, [data-theme="phale"] .save-card .lunar { display: inline; margin: 0 .5em; }
+  [data-theme="phale"] .save-card .divider { margin-top: 8px; }
+}

@@ -262,7 +262,7 @@
 /* M1-CARDS-02: xoay ngang -> cửa sổ rộng hơn, hộp nhãn cao hơn để tên đủ 2 dòng (có "…" khi quá dài). */
 @media (max-height: 500px) {
   .ic--v-santorini .ic-env-btn { width: min(380px, 84vw, calc((100vh - 112px) / 1.53)); }
-  .ic--v-santorini .ic-env-to { top: 68%; bottom: 4%; gap: 2px; }
+  .ic--v-santorini .ic-env-to { top: 73%; bottom: 3%; gap: 1px; }   /* QA10-04: "THÂN GỬI" nằm sau cánh cửa -> hạ xuống dưới cửa */
 }
 @media (max-width: 340px) {
   .ic--v-santorini .ic-card { padding: 16px 14px 96px; }

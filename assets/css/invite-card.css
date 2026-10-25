@@ -348,9 +348,22 @@ html:is([lang="th"], [lang="lo"], [lang="zh"]) .ic :is(.ic-names, .ic-names *, .
 [data-theme="gatsby"] .ic { --ic-acc-light: #7a5e26; }
 [data-theme="dienanh"] .ic { --ic-acc-light: #6e5528; }
 /* "Chỉ đường" trên thiệp: màu nhấn đậm (thắng màu link nhạt .wd a của giao diện pastel — lỗi có từ trước, sửa luôn cho mọi mẫu). */
-.ic .ic-link:not(#_) { color: var(--accent-ink, var(--accent)); }
+.ic:not([class*="ic--v-"]):not(.ic--foil-flip) .ic-link:not(#_) { color: var(--accent-ink, var(--accent)); }
+/* QA2-02 (25/10): màu nhấn đậm của giao diện (hoangkim/provence ở trên, dành cho thiệp GIẤY SÁNG) thắng luật đặt lại của thiệp NỀN TỐI
+   (dòng ~40) -> chữ nâu đậm trên nền tối 2,2–2,9:1. Đặt lại lần nữa với độ ưu tiên cao hơn, sau các luật theo giao diện. */
+.ic.ic[class*="ic--v-"], .ic.ic.ic--foil-flip, .ic--songhy-tri.ic .ic-card { --accent-ink: initial; }
 /* Nhãn "Thân gửi" + chữ phụ trên thiệp ở 4 giao diện pastel và Song hỷ: đậm hơn để đạt ≥4,5:1 (cả mẫu cũ). */
 :is([data-theme="serenity"], [data-theme="lavender"], [data-theme="summer"], [data-theme="thiep"]) .ic { --ic-to-small: color-mix(in srgb, var(--muted) 55%, var(--ink)); }
 [data-theme="summer"] .ic { --muted: #7a5a4a; }
 [data-theme="songhy"] .ic { --ic-to-small: #fde9bf; }
 [data-theme="lavender"] .ic { --ic-to-small: var(--ink); }
+
+/* QA2-09 (25/10): tên khách 1 từ rất dài tràn khỏi phong bì (songhy-tri, dia-gom) -> ngắt khi cần, không vượt khung. */
+.ic .ic-env-to b, .ic .ic-card-to b, .ic .ic-to b { overflow-wrap: anywhere; min-width: 0; }
+
+/* QA10-04 (25/10): điện thoại xoay ngang — cỡ tên khách theo vw (1,7rem ở 844px) trong khi bìa co theo CHIỀU CAO -> tên bị cắt / đè.
+   Màn thấp: tên co theo chiều cao màn. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .ic .ic-env-to b { font-size: clamp(.95rem, 4.4vh, 1.25rem) !important; line-height: 1.15; }
+  .ic .ic-env-to small { font-size: .8125rem; }
+}

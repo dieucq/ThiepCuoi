@@ -44,3 +44,6 @@
   color: #2b2521;
 }
 .ic--bao-can .ic-scroll .ic-link:not(#_) { color: var(--accent-ink); }   /* thắng luật màu link của giao diện (.wd a) */
+
+/* QA2-04 (25/10): ".bc > span { display:block }" thắng display:grid của tem -> chữ lệch mép. */
+.bc > .bc-sticker { display: grid; }

@@ -309,3 +309,10 @@ html:is([lang="th"], [lang="lo"], [lang="zh"])[data-theme="hoasua"] .wd .dl-d { 
   [data-theme="hoasua"] .intro--noimg .save-card { grid-column: 1; justify-self: center; }
 }
 @media (max-width: 760px) { [data-theme="hoasua"] .hs-hero .hs-bikewrap { display: none; } }
+/* QA6-11 (25/10): máy tính bảng dọc (iPad 768–1024): ảnh chỉ 22vw (~180px) giữa đầu trang cao trọn 1180px -> trống ~400px trên/dưới.
+   Ảnh lớn hơn, đầu trang cao theo nội dung. */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+  [data-theme="hoasua"] .intro { --hs-pw: min(34vw, 330px); min-height: 0; padding: 130px 5vw 90px; column-gap: 4vw; }
+  [data-theme="hoasua"] .intro-main { margin-right: 3vw; }
+  [data-theme="hoasua"] .hs-balcony { left: calc(50% - 2vw - 3vw - var(--hs-pw) / 2); }
+}

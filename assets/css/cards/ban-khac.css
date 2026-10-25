@@ -45,3 +45,9 @@
   color: #2b2521;
 }
 .ic--ban-khac .ic-scroll .ic-link:not(#_) { color: var(--accent-ink); }   /* thắng luật màu link của giao diện (.wd a) */
+
+/* QA2 rà soát (25/10): luật "> span { display:block }" thắng display:grid của .bk-print -> đặt lại với độ ưu tiên cao hơn. */
+.ic .bk-print { display: grid; }
+
+/* QA2 rà soát (25/10): luật "> span { display:block }" thắng display:grid của .bk-face -> đặt lại với độ ưu tiên cao hơn. */
+.ic .bk-face { display: grid; }
