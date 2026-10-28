@@ -1,0 +1,36 @@
+name: Docker staging verification
+
+on:
+  pull_request:
+    paths:
+      - 'Dockerfile'
+      - '.dockerignore'
+      - 'compose.staging.yaml'
+      - '.github/workflows/docker-staging.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate compose
+        run: docker compose -f compose.staging.yaml config -q
+      - name: Check image build
+        run: docker build --pull --no-cache --tag thiepcuoi:ci .
+      - name: Check PHP modules (without starting application)
+        run: |
+          docker run --rm --network none --entrypoint php thiepcuoi:ci -m | tee php-modules.txt
+          for module in PDO pdo_sqlite sqlite3 gd zip mbstring openssl; do
+            grep -ixq "$module" php-modules.txt || { echo "Missing PHP extension: $module"; exit 1; }
+          done
+      - name: Check container user
+        run: |
+          actual=$(docker run --rm --network none --entrypoint id thiepcuoi:ci -u)
+          test "$actual" = "10001"
