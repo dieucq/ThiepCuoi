@@ -1,0 +1,16 @@
+.git
+.github
+cloudflared
+database/*
+uploads/photos/*
+uploads/media/*
+application/logs/*
+application/cache/*
+*.db
+*.db-wal
+*.db-shm
+*.log
+.env
+.env.*
+Dockerfile*
+compose*.yaml
