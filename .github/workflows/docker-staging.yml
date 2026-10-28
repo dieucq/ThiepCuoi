@@ -34,3 +34,25 @@ jobs:
         run: |
           actual=$(docker run --rm --network none --entrypoint id thiepcuoi:ci -u)
           test "$actual" = "10001"
+      - name: Start staging server on CI runner
+        run: |
+          docker compose -f compose.staging.yaml up -d --no-build
+          sleep 8
+          docker compose -f compose.staging.yaml ps
+      - name: Smoke test HTTP and block private files
+        run: |
+          set -e
+          for n in 1 2 3 4 5; do
+            if curl --max-time 5 -sS -o /tmp/tc-home.html -w '%{http_code}' http://127.0.0.1:18686/ | grep -Eq '^(200|302)$'; then break; fi
+            sleep 3
+          done
+          code=$(curl --max-time 5 -sS -o /tmp/tc-home.html -w '%{http_code}' http://127.0.0.1:18686/)
+          test "$code" = 200 -o "$code" = 302
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:18686/database/test.db)" = 404
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:18686/application/config/database.php)" = 404
+      - name: Diagnostics on failure
+        if: failure()
+        run: docker compose -f compose.staging.yaml logs --tail=150 || true
+      - name: Cleanup staging
+        if: always()
+        run: docker compose -f compose.staging.yaml down || true
