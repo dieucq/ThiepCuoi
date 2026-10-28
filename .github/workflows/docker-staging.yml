@@ -23,16 +23,16 @@ jobs:
       - name: Validate compose
         run: docker compose -f compose.staging.yaml config -q
       - name: Check image build
-        run: docker build --pull --no-cache --tag thiepcuoi:ci .
+        run: docker compose -f compose.staging.yaml build --pull
       - name: Check PHP modules (without starting application)
         run: |
-          docker run --rm --network none --entrypoint php thiepcuoi:ci -m | tee php-modules.txt
+          docker run --rm --network none --entrypoint php thiepcuoi:homelab-staging -m | tee php-modules.txt
           for module in PDO pdo_sqlite sqlite3 gd zip mbstring openssl; do
             grep -ixq "$module" php-modules.txt || { echo "Missing PHP extension: $module"; exit 1; }
           done
       - name: Check container user
         run: |
-          actual=$(docker run --rm --network none --entrypoint id thiepcuoi:ci -u)
+          actual=$(docker run --rm --network none --entrypoint id thiepcuoi:homelab-staging -u)
           test "$actual" = "10001"
       - name: Start staging server on CI runner
         run: |
