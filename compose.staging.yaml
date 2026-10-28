@@ -1,0 +1,38 @@
+name: thiepcuoi-staging
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: thiepcuoi:homelab-staging
+    restart: "no"
+    ports:
+      - "127.0.0.1:18686:8686"
+    volumes:
+      - tc_database:/app/database
+      - tc_uploads:/app/uploads
+      - tc_cache:/app/application/cache
+      - tc_logs:/app/application/logs
+    environment:
+      CI_ENV: production
+      TZ: Asia/Ho_Chi_Minh
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1.0
+    healthcheck:
+      test: ["CMD", "php", "-r", "$c=@file_get_contents('http://127.0.0.1:8686/'); exit($c===false?1:0);"]
+      interval: 30s
+      timeout: 8s
+      retries: 3
+      start_period: 30s
+
+volumes:
+  tc_database:
+  tc_uploads:
+  tc_cache:
+  tc_logs:
